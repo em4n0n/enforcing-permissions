@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from django.contrib.auth.decorators import login_required, permission_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^users_only/', login_required(myview)),
+    
+    url(r'^category/', permission_required('myapp.change_category', login_url='login')(myview)),
+    
 ]
+
+
