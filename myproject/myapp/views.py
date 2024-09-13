@@ -29,3 +29,9 @@ from django.views.generic import ListView
 # @permission_required("myapp.change_category")
 # def store_creator(request):
 
+from .models import Product
+
+class ProductListView(PermissionRequiredMixin, ListView):
+    permission_required = "myapp.view_product"
+    template_name = "product.html"
+    model = Product
