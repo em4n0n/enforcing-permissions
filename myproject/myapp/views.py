@@ -12,7 +12,7 @@ def myview(request): #permission denied if anonymous user
 def myview(request):
     return HttpResponse("Hello World")
 
-def testpermission(user):
+def testpermission(user): # returns true if if user is authenticated
     if user.is_authenticated() and user.has_perm("myapp.change_category"):
         return True
     else:
