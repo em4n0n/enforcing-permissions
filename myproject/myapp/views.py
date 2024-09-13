@@ -4,10 +4,10 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-def myview(request):
+def myview(request): #permission denied if anonymous user
     if request.user.is_anonymous():
         raise PermissionDenied()
     
-@login_required
+@login_required #only allows access for logged users
 def myview(request):
     return HttpResponse("Hello World")
